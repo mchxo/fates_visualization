@@ -12,7 +12,6 @@ class Files:
 
 	def __init__(self, rest_folder=None, param_path=None, 
 		hist_path=None, address="relative"):
-		assert rest_folder or param_path, "no file path specified"
 		if rest_folder:
 			assert param_path, "no parameter file specified"
 			print("reading restart files ...")
@@ -29,6 +28,8 @@ class Files:
 					year += 1
 			self.param = nc.Dataset(param_path)
 			print("done!")
+		if param_path:
+			self.param = nc.Dataset(param_path)
 		if hist_path:
 			self.hist = nc.Dataset(hist_path)
 

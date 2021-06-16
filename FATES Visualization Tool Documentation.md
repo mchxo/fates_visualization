@@ -49,21 +49,21 @@ from treemap import *
 treemap(files, year=1, mode="basic", path="example_plots", name="basic_treemap")
 ```
 
-![FATES%20Visualization%20Tool%20Documentation%20ca920971efbc429594247cf2b1d63cb2/basic_treemap.png](example_plots/basic_treemap.png)
+![example_plots/basic_treemap.png](example_plots/basic_treemap.png)
 
 ```python
 treemap(files, year=1, mode="patch simplified", path="example_plots", 
 					name="patch_treemap")
 ```
 
-![FATES%20Visualization%20Tool%20Documentation%20ca920971efbc429594247cf2b1d63cb2/patch_treemap.png](FATES%20Visualization%20Tool%20Documentation%20ca920971efbc429594247cf2b1d63cb2/patch_treemap.png)
+![example_plots/patch_treemap.png](example_plots/patch_treemap.png)
 
 ```python
 treemap(files, year=1, mode="one patch", path="example_plots", 
 					name="one_treemap")
 ```
 
-![FATES%20Visualization%20Tool%20Documentation%20ca920971efbc429594247cf2b1d63cb2/one_treemap.png](FATES%20Visualization%20Tool%20Documentation%20ca920971efbc429594247cf2b1d63cb2/one_treemap.png)
+![example_plots/one_treemap.png](example_plots/one_treemap.png)
 
 ## Animated Treemap
 
@@ -96,7 +96,7 @@ animate_treemap(files, mode="one patch", path="example_plots",
 								file_name="example_animated_treemap")
 ```
 
-![FATES%20Visualization%20Tool%20Documentation%20ca920971efbc429594247cf2b1d63cb2/example_animated_treemap.gif](FATES%20Visualization%20Tool%20Documentation%20ca920971efbc429594247cf2b1d63cb2/example_animated_treemap.gif)
+![example_plots/example_animated_treemap.gif](example_plots/example_animated_treemap.gif)
 
 # Sunburst Matrix
 
@@ -138,7 +138,7 @@ sunburst_matrix(files, var_dict=var,
 								path="example_plots")
 ```
 
-![FATES%20Visualization%20Tool%20Documentation%20ca920971efbc429594247cf2b1d63cb2/animated_matrix.gif](FATES%20Visualization%20Tool%20Documentation%20ca920971efbc429594247cf2b1d63cb2/animated_matrix.gif)
+![example_plots/animated_matrix.gif](example_plots/animated_matrix.gif)
 
 Here is an example of an interactive sunburst matrix:
 
@@ -148,6 +148,51 @@ sunburst_matrix(files, var_dict=var,
 								path="example_plots")
 ```
 
-![FATES%20Visualization%20Tool%20Documentation%20ca920971efbc429594247cf2b1d63cb2/Untitled.png](FATES%20Visualization%20Tool%20Documentation%20ca920971efbc429594247cf2b1d63cb2/Untitled.png)
+![example_plots/interactive_matrix.png](example_plots/interactive_matrix.png)
 
 To view the html file, click here
+
+# Colored Map
+
+Colored maps are used to visualize one-dimensional regional data. The quantitative data is represented through color ramps. The mapping is done through [mapbox](https://www.mapbox.com/)'s free API, so you will need to sign up and obtain a free token for API access.
+
+**`colored_map`(files, var, token, title, file_name, mode="interactive", path="", center={"lat": 39.5, "lon": -121}, zoom=5.5, w=500, h=800)**
+
+`files` an instance of the Files object
+
+`var` the quantitative variable to be plotted
+
+`token` access token obtained from mapbox account
+
+`title` the title for the plot
+
+`file_name` the filename under which the plot will be saved
+
+`mode` the `colored_map` function supports 2 modes:
+
+- "interactive": exports an interactive html file that allows user to interact with the map
+- "static": exports a static plot
+
+`path` the relative path to which the plot is saved
+
+`center` a dictionary of the format {"lat": center_latitude, "lon": center_longitude} that determines the center of the initial plot
+
+`zoom` the zoom-in scale of the initial plot
+
+`w, h` the width and height of the map window
+
+Here is an example of a colored map of the variable "TLAI". Notice that since the regional history file is quite large, it is not included in the sample_data folder. To try out this example, one needs to use their own regional files locally.
+
+```python
+from colored_map import *
+
+token = "your token"
+regional = Files(param_path="regional_param_path", hist_path="regional_hist_path")
+
+colored_map(files=regional, var="TLAI", token=token, title="example_regional", 
+						file_name="regional", mode="static", path="example_plots")
+```
+
+![example_plots/regional.png](example_plots/regional.png)
+
+An example of the interactive html file can be found here
