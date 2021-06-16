@@ -49,7 +49,7 @@ from treemap import *
 treemap(files, year=1, mode="basic", path="example_plots", name="basic_treemap")
 ```
 
-![FATES%20Visualization%20Tool%20Documentation%20ca920971efbc429594247cf2b1d63cb2/basic_treemap.png](FATES%20Visualization%20Tool%20Documentation%20ca920971efbc429594247cf2b1d63cb2/basic_treemap.png)
+![FATES%20Visualization%20Tool%20Documentation%20ca920971efbc429594247cf2b1d63cb2/basic_treemap.png](example_plots/basic_treemap.png)
 
 ```python
 treemap(files, year=1, mode="patch simplified", path="example_plots", 
