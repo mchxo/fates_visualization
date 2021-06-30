@@ -16,7 +16,6 @@ from plotly.subplots import make_subplots
 from files import *
 from treemap_utils import *
 import imageio
-from pygifsicle import optimize
 import shutil
 
 
