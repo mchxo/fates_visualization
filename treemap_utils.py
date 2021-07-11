@@ -185,11 +185,11 @@ def find_individual_coverage(df, total):
 	grouped = df.groupby('canopy_layer', as_index=False)[['crown_area']].sum()
 	try:
 		canopy_raw = grouped[grouped['canopy_layer'] == "orange"].reset_index()['crown_area'][0]
-	except IndexError:
+	except (KeyError, IndexError):
 		canpy_raw = 0
 	try:
 		understory_raw = grouped[grouped['canopy_layer'] == 'grey'].reset_index()['crown_area'][0]
-	except IndexError:
+	except (KeyError, IndexError):
 		understory_raw = 0
 	data = [canopy_raw, understory_raw, total - max(canopy_raw, understory_raw)]
 	if data[2] < 0:
